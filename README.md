@@ -2,7 +2,7 @@
 
 Deep Q-Network (DQN) agent for `ALE/Atlantis-v5`, built from scratch with PyTorch and Gymnasium (no Stable-Baselines3, RLlib, CleanRL or TorchRL).
 
-## Member 1: Environment, CNN and replay buffer
+## Sheilla: Environment, CNN and replay buffer
 
 This notebook contains the building blocks used by `train.py`:
 
