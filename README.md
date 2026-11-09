@@ -19,5 +19,5 @@ pip install -r requirements.txt
 
 ## Files
 
-- `member1_environment_cnn_buffer.ipynb`: environment, CNN, replay buffer and random baseline
+- `environment_cnn_buffer.ipynb`: environment, CNN, replay buffer and random baseline
 - `requirements.txt`: dependencies
