@@ -19,7 +19,7 @@ from dqn_components import QNetwork, ReplayBuffer, device, make_env
 def parse_args():
     parser = argparse.ArgumentParser()
 
-    # The six hyperparameters we tune. Defaults are the team baseline.
+    # The six hyperparameters we tune. Defaults are the team baseline
     parser.add_argument("--lr", type=float, default=1e-4)
     parser.add_argument("--gamma", type=float, default=0.99)
     parser.add_argument("--batch-size", type=int, default=32)
