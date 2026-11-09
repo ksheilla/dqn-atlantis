@@ -13,7 +13,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 
 def make_env(render_mode=None):
-    # frameskip=1 here, because AtariPreprocessing does the frame skipping itself
+    # frameskip=1 here, because AtariPreprocessing does the frame skipping itself.
     env = gym.make("ALE/Atlantis-v5", frameskip=1, render_mode=render_mode)
     # grayscale + resize to 84x84 + skip 4 frames per action
     env = AtariPreprocessing(env, frame_skip=4, screen_size=84, grayscale_obs=True)
