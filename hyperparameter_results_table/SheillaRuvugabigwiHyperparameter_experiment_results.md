@@ -1,8 +1,5 @@
 # Hyperparameter experiments: Sheilla Keza RUVUGABIGWI
 
-**Member name:** Sheilla Keza RUVUGABIGWI
-**My part:** environment, CNN and replay buffer (`dqn_components.py`), and experiments on learning rate, then batch size at my best learning rate.
-
 ## How every run was set up
 
 Only the settings in the table change. Everything else stays the same:
