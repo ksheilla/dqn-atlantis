@@ -1,4 +1,4 @@
-"""The environment, CNN and replay buffer shared by train.py and play.py."""
+"""The game environment, the CNN and the replay buffer, used by both train.py and play.py."""
 
 import ale_py
 import gymnasium as gym
