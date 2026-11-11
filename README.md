@@ -1,6 +1,7 @@
 # DQN on Atari Atlantis
 
-Deep Q-Network (DQN) agent for `ALE/Atlantis-v5`, built from scratch with PyTorch and Gymnasium (no Stable-Baselines3, RLlib, CleanRL or TorchRL).
+Deep Q-Network (DQN) agent for `ALE/Atlantis-v5`, built from scratch with
+PyTorch and Gymnasium (no Stable-Baselines3, RLlib, CleanRL or TorchRL).
 
 ## Sheilla: Environment, CNN and replay buffer
 
@@ -11,13 +12,28 @@ This notebook contains the building blocks used by `train.py`:
 - **Replay buffer (`ReplayBuffer`)**: stores `(state, action, reward, next_state, done)` with frames as uint8 and samples random batches.
 - **Random baseline**: 10 episodes with random actions, average score **19,540**. A trained agent should beat this.
 
-## Setup
+## Setup with uv
 
 ```bash
-pip install -r requirements.txt
+uv sync
 ```
+
+Run the ten epsilon-schedule experiments with the same 200,000-step budget and
+seed:
+
+```bash
+uv run python run_epsilon_experiments.py
+```
+
+Each experiment is saved under `models/epsilon_experiments/exp01` through
+`exp10`. The script writes `experiment_results.csv` and
+`experiment_results.md`. Replace the observation placeholder after reviewing
+each experiment's `training_log.csv`. The reported score is the mean reward
+of the last 20 completed episodes.
 
 ## Files
 
 - `environment_cnn_buffer.ipynb`: environment, CNN, replay buffer and random baseline
 - `requirements.txt`: dependencies
+- `run_epsilon_experiments.py`: the ten epsilon schedule experiments for Task 3
+- `pyproject.toml`: dependencies and project settings for uv

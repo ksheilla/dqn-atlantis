@@ -1,0 +1,12 @@
+[project]
+name = "dqn-atlantis"
+version = "0.1.0"
+requires-python = ">=3.10"
+dependencies = [
+    "gymnasium[atari]",
+    "ale-py",
+    "torch",
+    "numpy",
+    "opencv-python",
+    "matplotlib",
+]

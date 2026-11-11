@@ -3,13 +3,15 @@
 Run it like this, changing only the settings you are testing:
     python train.py --gamma 0.95 --output-dir models/YourName/exp01_gamma_0.95
 
-Each run saves two files in --output-dir:
+Each run saves these files in --output-dir:
     dqn_model.pth      the trained network
     training_log.csv   one row per game: its length, steps so far, score and epsilon
+    summary.json       final mean score and the settings used for the run
 """
 
 import argparse
 import csv
+import json
 import random
 from pathlib import Path
 
@@ -177,11 +179,30 @@ def train(args):
     log_file.close()
     env.close()
 
+    final_mean_score = None
     if recent_scores:
+        final_mean_score = float(np.mean(recent_scores))
         print(f"Finished. Mean score of the last {len(recent_scores)} episodes: "
-              f"{np.mean(recent_scores):.0f}")
+              f"{final_mean_score:.0f}")
     else:
         print("Finished, but no episode completed. Use more --total-steps.")
+
+    summary = {
+        "total_steps": args.total_steps,
+        "seed": args.seed,
+        "learning_rate": args.lr,
+        "gamma": args.gamma,
+        "batch_size": args.batch_size,
+        "epsilon_start": args.epsilon_start,
+        "epsilon_end": args.epsilon_end,
+        "epsilon_decay": args.epsilon_decay,
+        "episodes_completed": episode,
+        "last_20_mean_reward": final_mean_score,
+    }
+    with open(output_dir / "summary.json", "w", encoding="utf-8") as summary_file:
+        json.dump(summary, summary_file, indent=2)
+
+    return final_mean_score
 
 
 if __name__ == "__main__":
