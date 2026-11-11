@@ -14,7 +14,7 @@ To make the runs fair to compare, only the settings in the table change. Everyth
 - For learning, every reward is turned into -1, 0 or +1, so big and small hits count the same. The scores we report are the real game scores.
 - Epsilon starts at 1.0, ends at 0.05, and gets there in a straight line over the first 100,000 steps
 
-**Score** is the mean real game score of the last 20 games of training, which is the score our team agreed to compare runs with. For reference, a player pressing random buttons scores about 19,300 to 19,500 in our random tests. The team baseline (learning rate 1e-4, gamma 0.99, batch 32, same epsilon settings) scored about 12,000.
+**Score** is the mean real game score of the last 20 games of training, which is the score our team agreed to compare runs with. For reference, a player pressing random buttons scores about 19,300 to 19,540 in our random tests. The plots use 19,540. The team baseline (learning rate 1e-4, gamma 0.99, batch 32, same epsilon settings) scored 13,205 in Sheilla's baseline run (her experiment 1).
 
 **Why I did not change epsilon:** our team split the six settings between us. I tested gamma, then learning rate and batch size. Bianca tests the three epsilon settings. Keeping epsilon the same in all my runs means any change in score comes from the setting I changed.
 
@@ -51,6 +51,24 @@ The assignment asks for episode length, number of steps and rewards for the best
 | Mean score, last 20 games | 29,245 |
 | Best single game | 56,800 |
 | Mean score with no random moves (5 test games) | 28,260, ranging from 17,000 to 47,700 |
+
+## Training plots
+
+Made with `plot_training.py` from each run's training log. All plots are in `training_plots/JeanMuhire/` at the top of the repo.
+
+**My best run (experiment 9):** the score stayed below the random agent for most of the run, then climbed past it after about 160,000 steps and was still rising at the end. Games got longer at the same time, so the agent survived longer.
+
+![Experiment 9 training](../training_plots/JeanMuhire/exp09_gamma_0.95_batch_64.png)
+
+**Gamma experiments (1 to 6):** gamma 0.95 pulls ahead in the second half. Every gamma of 0.98 and above sinks and stays low.
+
+![Gamma comparison](../training_plots/JeanMuhire/compare_gamma.png)
+
+**Learning rate and batch size at gamma 0.95 (experiments 2 and 7 to 10):** batch 64 and learning rate 2.5e-4 climb the most at the end. Learning rate 5e-5 and batch 16 fall in the middle and stay low.
+
+![Learning rate and batch size comparison](../training_plots/JeanMuhire/compare_lr_and_batch.png)
+
+Each experiment also has its own plot in the same folder, named like its model folder.
 
 ## What I found
 
