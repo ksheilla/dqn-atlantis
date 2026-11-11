@@ -4,7 +4,7 @@
 
 Only the settings in the table change. Everything else stays the same:
 
-- 200,000 steps per run, seed 42
+- 200,000 steps per run, seed 42.
 - Learning after every step from a replay buffer of 100,000 experiences
 - Learning starts after 10,000 warm-up steps
 - Target network updated every 1,000 steps
