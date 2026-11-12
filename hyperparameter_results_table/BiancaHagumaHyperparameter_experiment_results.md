@@ -13,7 +13,7 @@ Score is the mean real game score of the last 20 games of training
 | Experiment | Learning rate | Gamma | Batch size | Epsilon start | Epsilon end | Epsilon decay | Score | Observed behaviour |
 |---:|---:|---:|---:|---:|---:|---:|---:|---|
 | 1 | 1e-4 | 0.99 | 32 | 1.0 | 0.10 | 25,000 steps | 18,815 | Exploration reached epsilon 0.10 early. The score improved late in training, finishing with a final last-20 mean of 18,815, close to the random-play baseline. |
-| 2 | 1e-4 | 0.99 | 32 | 1.0 | 0.05 | 50,000 steps | 15,000 | Exploration lasted longer than Experiment 1. The final last-20 mean was 15,000 after epsilon reached 0.05. |
+| 2 | 1e-4 | 0.99 | 32 | 1.0 | 0.05 | 50,000 steps | 18,315 | Score started near 22,000 and fell to a 20-episode mean of about 10,400 near step 78,000, soon after epsilon reached 0.05. It recovered from about 100,000 steps and finished at 18,315, just below random play (19,540). |
 | 3 | 1e-4 | 0.99 | 32 | 1.0 | 0.01 | 150,000 steps | 14,995 | Slow decay kept exploration active through most of training. The final last-20 mean was 14,995. |
 | 4 | 1e-4 | 0.99 | 32 | 0.7 | 0.10 | 200,000 steps | 14,295 | Gradual decay kept exploration active for most of training. The score peaked near 20k during the run, then declined as epsilon approached 0.10; final last-20 mean was 14,295. |
 | 5 | 1e-4 | 0.99 | 32 | 0.7 | 0.05 | 25,000 steps | 18,870 | Fast decay reached epsilon 0.05 early, followed by a strong late improvement. The final last-20 mean was 18,870, close to the random-play baseline. |
