@@ -3,8 +3,11 @@
 How every run was set up
 
 200,000 steps per run, seed 42
+
 Learning rate 0.0001, gamma 0.99 and batch size 32 are the same in every run
+
 Only the epsilon schedule changes: epsilon start, epsilon end and epsilon decay
+
 Score is the mean real game score of the last 20 games of training
 
 | Experiment | Learning rate | Gamma | Batch size | Epsilon start | Epsilon end | Epsilon decay | Score | Observed behaviour |
