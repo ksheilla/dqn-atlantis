@@ -17,5 +17,5 @@ This notebook contains the building blocks used by `train.py`:
 
 - `environment_cnn_buffer.ipynb`: environment, CNN, replay buffer and random baseline
 - `requirements.txt`: dependencies
-- `run_epsilon_experiments.py`: the ten epsilon schedule experiments for Task 3
+- `run_epsilon_experiments.py`: trains ten agents with different epsilon schedules
 - `pyproject.toml`: dependencies and project settings for uv
