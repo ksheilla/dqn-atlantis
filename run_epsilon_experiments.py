@@ -1,4 +1,4 @@
-"""Run the ten epsilon schedules required for the individual experiment."""
+"""Train ten agents, each with a different epsilon schedule, and collect their final scores in one table."""
 
 import csv
 import json
@@ -79,10 +79,11 @@ def write_results(results, output_root):
         for result in results:
             score = result["last_20_mean_reward"]
             score_text = "N/A" if score is None else f"{score:.0f}"
+            # The observed behaviour column is left empty to be filled in by hand.
             result_file.write(
                 f"| {result['experiment']} | {result['epsilon_start']} | "
                 f"{result['epsilon_end']} | {result['epsilon_decay']:,} | "
-                f"{score_text} | Add an observation after reviewing the log. |\n"
+                f"{score_text} |  |\n"
             )
 
 
@@ -105,7 +106,7 @@ def main():
             "experiment": experiment_number,
             **settings,
             "last_20_mean_reward": summary["last_20_mean_reward"],
-            "observed_behaviour": "Add an observation after reviewing the log.",
+            "observed_behaviour": "",
         })
         write_results(results, output_root)
 
