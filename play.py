@@ -1,7 +1,12 @@
 """Watch a trained DQN agent play Atlantis.
 
 Run it like this:
-    python play.py --model models/JeanMuhire/exp09_gamma_0.95_batch_64/dqn_model.pth
+    python play.py
+
+By default it plays our best model (learning rate 5e-4, batch 32, gamma 0.99).
+It won all 10 of its test games against random play, averaging 30,060.
+To watch a different model, pass its path:
+    python play.py --model models/JeanMuhire/exp03_gamma_0.97/dqn_model.pth
 
 It loads the saved network, opens a game window and plays with no random moves:
 on every screen it presses the button with the highest Q-value. Nothing is
@@ -18,6 +23,7 @@ import torch
 
 from dqn_components import QNetwork, device, make_env
 
+BEST_MODEL = "models/SheillaRuvugabigwi/exp03_lr_5e-4_batch_32/dqn_model.pth"
 WINDOW_NAME = "DQN agent playing Atlantis (press Q to stop)"
 WINDOW_SCALE = 3                # the game screen is small, so show it 3 times bigger
 SECONDS_PER_MOVE = 4 / 60       # each move lasts 4 game frames, and the game runs at 60 frames a second
@@ -25,7 +31,7 @@ SECONDS_PER_MOVE = 4 / 60       # each move lasts 4 game frames, and the game ru
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Watch a trained DQN agent play Atlantis.")
-    parser.add_argument("--model", default="dqn_model.pth",
+    parser.add_argument("--model", default=BEST_MODEL,
                         help="path to the saved network (dqn_model.pth)")
     parser.add_argument("--episodes", type=int, default=1, help="how many games to play")
     parser.add_argument("--max-episode-steps", type=int, default=10_000,
