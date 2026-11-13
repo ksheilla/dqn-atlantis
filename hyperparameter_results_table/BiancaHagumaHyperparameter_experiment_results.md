@@ -20,6 +20,6 @@ Score is the mean real game score of the last 20 games of training
 | 6 | 1e-4 | 0.99 | 32 | 0.7 | 0.01 | 50,000 steps | 16,160 | Epsilon dropped quickly to 0.01, then the run improved mid-training before becoming unstable near the end. Final last-20 mean was 16,160. |
 | 7 | 1e-4 | 0.99 | 32 | 0.5 | 0.10 | 150,000 steps | 14,650 | Lower starting epsilon and slow decay gave steady exploration, with a late dip before partial recovery. Final last-20 mean was 14,650. |
 | 8 | 1e-4 | 0.99 | 32 | 0.5 | 0.05 | 200,000 steps | 13,930 | Slow decay kept exploration active throughout training. The final last-20 mean was 13,930 as epsilon approached 0.05. |
-| 9 | 1e-4 | 0.99 | 32 | 0.5 | 0.01 | 25,000 steps | 19,475 | Very fast decay reached epsilon 0.01 early, leaving a long exploitation phase. The score improved late and finished at 19,475, slightly above the random-play baseline. |
+| 9 | 1e-4 | 0.99 | 32 | 0.5 | 0.01 | 25,000 steps | 19,475 | Very fast decay reached epsilon 0.01 early, leaving a long exploitation phase. The score improved late and finished at 19,475, slightly below the random-play baseline. |
 | 10 | 1e-4 | 0.99 | 32 | 1.0 | 0.01 | 50,000 steps | 23,580 | Maximum initial exploration fell to 0.01 quickly, followed by strong late improvement and longer episodes. Final last-20 mean was 23,580, above the random-play baseline. |
 
