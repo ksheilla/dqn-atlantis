@@ -78,8 +78,9 @@ def main():
     parser = argparse.ArgumentParser(description="Make training plots from training logs.")
     parser.add_argument("runs", nargs="+", help="one or more run folders that contain training_log.csv")
     parser.add_argument("--output", required=True, help="where to save the image, for example plot.png")
-    parser.add_argument("--random-score", type=float, default=19_540,
-                        help="score of the random agent, drawn as a red dashed line")
+    parser.add_argument("--random-score", type=float, default=17_358,
+                        help="score of the random agent (mean of the notebook's 50 seeded games), "
+                             "drawn as a red dashed line")
     args = parser.parse_args()
 
     Path(args.output).parent.mkdir(parents=True, exist_ok=True)
