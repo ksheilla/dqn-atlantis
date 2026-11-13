@@ -12,7 +12,7 @@ Only the settings in the table change. Everything else stays the same:
 - Epsilon starts at 1.0, ends at 0.05, and decays linearly over the first 100,000 steps
 - Gamma is 0.99 in every run
 
-**Score** is the mean real game score of the last 20 episodes of training. For reference, a random agent averaged 19,540 over 10 episodes. My baseline run (experiment 1) scored 13,205.
+**Score** is the mean real game score of the last 20 episodes of training. For reference, a random agent averaged 17,358 over 50 seeded games (the random-agent test in the notebook). My baseline run (experiment 1) scored 13,205.
 
 Each run's model and training log are in `models/SheillaRuvugabigwi/`, in the folder for that experiment.
 
@@ -28,16 +28,16 @@ Each run's model and training log are in `models/SheillaRuvugabigwi/`, in the fo
 | 6 | 1e-5 | 0.99 | 32 | 1.0 | 0.05 | 100,000 steps | 7,160 | Steady decline with very short episodes. Worst run. |
 | 7 | 5e-4 | 0.99 | 16 | 1.0 | 0.05 | 100,000 steps | 10,625 | Noisy updates. Fell to about 8k and recovered only slowly. |
 | 8 | 5e-4 | 0.99 | 64 | 1.0 | 0.05 | 100,000 steps | 12,930 | Peaked at a last-20 mean of 21,305 around step 83,000, above random play, then declined. Unstable. |
-| 9 | 5e-4 | 0.99 | 128 | 1.0 | 0.05 | 100,000 steps | **18,695** | **My best run.** Stayed above random play for about 100,000 steps (peak last-20 mean 26,160 near step 154,000) with longer episodes, then slipped at the end. |
+| 9 | 5e-4 | 0.99 | 128 | 1.0 | 0.05 | 100,000 steps | **18,695** | **My best run.** Stayed above random play from about step 68,000 to the end of the run (peak last-20 mean 26,160 near step 154,000) with longer episodes, but slipped back close to it at the end. |
 | 10 | 5e-4 | 0.99 | 256 | 1.0 | 0.05 | 100,000 steps | 12,595 | Peaked around 19.5k, then fell to about 12k. About 50 minutes per run, with no gain over batch 128. |
 
 ## What I found
 
 **Best: experiment 9** (learning rate 5e-4, batch 128), score 18,695.
 
-- It was the only run that stayed above random play (19,540) for a long stretch after epsilon had dropped, with a last-20 mean of about 20,000 to 24,000 from step 75,000 to 175,000.
+- It was the only run that stayed above random play (17,358) after epsilon had dropped: its last-20 mean was above it from about step 68,000 to the end, and about 20,000 to 24,000 from step 75,000 to 175,000.
 - Its games were longer (often 1,500 to 2,400 steps), so the agent survived longer.
-- A bigger batch probably gave steadier updates. It still ended just under random play, so it improved but did not learn to play well.
+- A bigger batch probably gave steadier updates. It ended only just above random play (18,695 against 17,358), so it improved but did not learn to play well.
 
 **Worst: experiment 6** (learning rate 1e-5), score 7,160.
 

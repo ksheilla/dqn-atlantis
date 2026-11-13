@@ -14,7 +14,7 @@ To make the runs fair to compare, only the settings in the table change. Everyth
 - For learning, every reward is turned into -1, 0 or +1, so big and small hits count the same. The scores we report are the real game scores.
 - Epsilon starts at 1.0, ends at 0.05, and gets there in a straight line over the first 100,000 steps
 
-**Score** is the mean real game score of the last 20 games of training, which is the score our team agreed to compare runs with. For reference, a player pressing random buttons scores about 19,300 to 19,540 in our random tests. The plots use 19,540. The team baseline (learning rate 1e-4, gamma 0.99, batch 32, same epsilon settings) scored 13,205 in Sheilla's baseline run (her experiment 1).
+**Score** is the mean real game score of the last 20 games of training, which is the score our team agreed to compare runs with. For reference, a player pressing random buttons averaged 17,358 over 50 seeded games in the notebook's random-agent test, and the plots draw that score as the red line. The team baseline (learning rate 1e-4, gamma 0.99, batch 32, same epsilon settings) scored 13,205 in Sheilla's baseline run (her experiment 1).
 
 **Why I did not change epsilon:** our team split the six settings between us. I tested gamma, then learning rate and batch size. Bianca tests the three epsilon settings. Keeping epsilon the same in all my runs means any change in score comes from the setting I changed.
 
@@ -28,9 +28,9 @@ python train.py --gamma 0.95 --batch-size 64 --output-dir models/JeanMuhire/exp0
 
 | Experiment | Learning rate | Gamma | Batch size | Epsilon start | Epsilon end | Epsilon decay | Score | Observed behaviour |
 |---|---|---|---|---|---|---|---|---|
-| 1 | 1e-4 | 0.90 | 32 | 1.0 | 0.05 | 100,000 steps | 19,710 | The score dropped once random moves were reduced, then came back in the last quarter, ending about level with random play. It learned something, but caring this little about the future seems to hold it back. |
+| 1 | 1e-4 | 0.90 | 32 | 1.0 | 0.05 | 100,000 steps | 19,710 | The score dropped once random moves were reduced, then came back in the last quarter, ending a little above random play. It learned something, but caring this little about the future seems to hold it back. |
 | 2 | 1e-4 | 0.95 | 32 | 1.0 | 0.05 | 100,000 steps | 22,630 | Steady for most of the run, then a clear rise in the last quarter, so it was still improving when training stopped. Best of my gamma values and above random play. |
-| 3 | 1e-4 | 0.97 | 32 | 1.0 | 0.05 | 100,000 steps | 19,515 | Dipped in the middle, then recovered and reached its best score right at the end. It is about level with random play in training, but played much better with no random moves at all, so it may simply need more steps. |
+| 3 | 1e-4 | 0.97 | 32 | 1.0 | 0.05 | 100,000 steps | 19,515 | Dipped in the middle, then recovered and reached its best score right at the end. It ends a little above random play in training, but played much better with no random moves at all, so it may simply need more steps. |
 | 4 | 1e-4 | 0.98 | 32 | 1.0 | 0.05 | 100,000 steps | 13,855 | Its best moment was near the start, when it was still pressing mostly random buttons. Once it relied on its own choices, the score kept falling and games got shorter. |
 | 5 | 1e-4 | 0.995 | 32 | 1.0 | 0.05 | 100,000 steps | 13,055 | The same pattern as gamma 0.98: best near the start, then a steady drop it never recovered from. Caring almost as much about the far future as the present made learning worse. |
 | 6 | 1e-4 | 0.999 | 32 | 1.0 | 0.05 | 100,000 steps | 12,525 | My worst run. The score fell through the whole run and stayed low. With gamma this close to 1, the agent tries to count rewards far into the future, and those are hard to predict. Its guesses become unreliable, so it learns from bad answers. |

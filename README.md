@@ -32,7 +32,7 @@ The agent has 4 buttons:
 | `RIGHTFIRE` | Shoot from the right gun |
 | `LEFTFIRE` | Shoot from the left gun |
 
-A player pressing random buttons already scores well in this game: 19,290 on average over 10 games in our notebook. Random games vary a lot (from 13,500 to 31,300 in that test), so we treat about 19,000 as the score a trained agent must beat. The red line in our plots is drawn at 19,540.
+A player pressing random buttons already scores well in this game: **17,358** on average over 50 games in our notebook. The games are seeded, so the notebook gives this same number every time it runs. Single random games vary a lot (from 5,200 to 35,100 in that test), so we treat 17,358 as the score a trained agent must beat, and the red line in our plots is drawn there.
 
 ## What the agent sees
 
